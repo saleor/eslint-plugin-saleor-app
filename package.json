@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "eslint-plugin-saleor-app",
+  "version": "0.1.0",
+  "description": "ESLint plugin for Saleor Apps",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "url": "https://github.com/saleor/eslint-plugin-saleor-app.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/saleor/eslint-plugin-saleor-app/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=16 <19",
+    "pnpm": ">=8"
+  },
+  "author": {
+    "name": "Saleor Commerce",
+    "url": "https://saleor.io"
+  },
+  "private": false,
+  "keywords": [
+    "eslint",
+    "plugin",
+    "saleor"
+  ],
+  "license": "BSD-3-Clause"
+}
