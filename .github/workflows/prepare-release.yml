@@ -1,0 +1,34 @@
+name: Open release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Prepare release with Changesets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.4 # use version from package.json - corepack
+      - name: Setup Node.js 16 # It was default for Changesets action, check if it can be bumped to v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+      - run: pnpm install
+      - name: Create Release Pull Request
+        uses: changesets/action@v1
+        id: changesets
+        with:
+          title: Release to npm
+          commit: Release to npm
+          publish: "pnpm publish:ci"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
