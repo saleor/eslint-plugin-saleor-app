@@ -57,4 +57,33 @@ Then configure the rules:
 > **Warning**
 > Remember to prefix the rules with `@saleor/saleor-app/<rule_name>`
 
-- `logger-leak`: Checks if `logger.` usage accidentaly leaks potentially PII by passing a shorthand value, which is an object or an array
+### `logger-leak`
+
+Checks if `logger.` usage accidentaly leaks potentially PII by passing a shorthand value, which is an object or an array
+
+#### Options
+
+This rule accepts an array of logger names used in your application.
+
+For example, you are importing a logger from some file, the logger name is `myLogger`:
+
+```ts
+import { myLogger } from "./logger";
+```
+
+By default, the rule checks for logger object that's named `logger`.
+The rule doesn't check imports, just the name.
+
+To check for your custom logger provide it as options to the rule
+
+```json
+{
+  "rules": {
+    "@saleor/saleor-app/logger-leak": ["error", ["logger", "myLogger"]]
+  }
+}
+```
+
+> **Note**
+> If you provide a config it will override the default configuration that checks for `logger`.
+> If you use both `logger` and `myLogger` in your app, you need to specify both as shown in the example
