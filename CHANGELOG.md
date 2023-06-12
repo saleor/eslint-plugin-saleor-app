@@ -1,5 +1,12 @@
 # eslint-plugin-saleor-app
 
+## 0.1.2
+
+### Patch Changes
+
+- 007af91: Add optional config for `logger-leak` rule
+  The config can specify the name of the logger object
+
 ## 0.1.1
 
 ### Patch Changes
