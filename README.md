@@ -2,6 +2,8 @@
 
 ESLint plugin with rules for Saleor Apps
 
+[![NPM version](https://img.shields.io/npm/v/@saleor/eslint-plugin-saleor-app.svg?style=for-the-badge&labelColor=000000)](https://www.npmjs.com/package/@saleor/eslint-plugin-saleor-app)
+
 ## Get started
 
 ### 1. Install
