@@ -5,13 +5,17 @@ import * as tsutils from "tsutils";
 
 export const loggerRules = ESLintUtils.RuleCreator.withoutDocs({
   create(context) {
+    const propertiesToCheck = context.options[0]
+      ? new Set(context.options[0])
+      : new Set(["logger"]);
+
     return {
       CallExpression(node) {
         // Check usage of logger.xxx()
         if (
           node.callee.type === "MemberExpression" &&
           node.callee.object.type === "Identifier" &&
-          node.callee.object.name === "logger"
+          propertiesToCheck.has(node.callee.object.name)
         ) {
           const loggerData = node.arguments.find(
             (arg) => arg.type === "ObjectExpression",
@@ -90,7 +94,17 @@ export const loggerRules = ESLintUtils.RuleCreator.withoutDocs({
       noUnknowns:
         "Potential PII leak: object shorthand property used with unknown value inside logger arguments. Please use only known values.",
     },
-    schema: [],
+    schema: [
+      {
+        type: "array",
+        items: {
+          type: "string",
+          title: "Override logger names to check",
+          examples: ["myLogger", "customLogger"],
+          default: ["logger"],
+        },
+      },
+    ],
   },
   defaultOptions: [],
 });
