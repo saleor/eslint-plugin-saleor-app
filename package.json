@@ -11,7 +11,8 @@
     "prepare": "husky install",
     "lint": "tsc --noEmit",
     "lint-staged": "lint-staged",
-    "publish:ci": "pnpm publish && npx changeset tag && git push --follow-tags",
+    "publish:ci-prod": "pnpm publish && pnpm exec changeset tag && git push --follow-tags",
+    "publish:ci-dev": "pnpm exec changeset version --snapshot pr && pnpm publish --tag dev --no-git-checks",
     "prepublishOnly": "pnpm build"
   },
   "main": "dist/index.js",
