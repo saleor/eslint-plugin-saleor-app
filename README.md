@@ -8,7 +8,7 @@ ESLint plugin with rules for Saleor Apps
 
 Saleor App ESLint plugin requires TypeScript ESLint Parser to be installed and configured in your app.
 
-If you're using Next.js it's alrady included in the default [`eslint-config-next` config](https://github.com/vercel/next.js/blob/canary/packages/eslint-config-next/index.js#L111)
+If you're using Next.js it's already included in the default [`eslint-config-next` config](https://github.com/vercel/next.js/blob/canary/packages/eslint-config-next/index.js#L111)
 
 ### 1. Install
 
@@ -39,9 +39,34 @@ npm i --save-dev @saleor/eslint-plugin-saleor-app
 
 ### 2. Configure ESLint
 
-You can either use recommended configuration or configure each rule manually
+You can either use recommended configuration or configure each rule manually.
 
-#### Recommended configuration
+#### Flat config
+
+##### Recommended configuration
+
+```ts
+import saleorPlugin from "@saleor/eslint-plugin-saleor-app";
+
+export default [saleorPlugin.configs["flat/recommended"]];
+```
+
+##### Manual configuration
+
+```ts
+import saleorPlugin from "@saleor/eslint-plugin-saleor-app";
+
+export default [
+  {
+    plugins: { "@saleor/saleor-app": saleorPlugin },
+    rules: { "@saleor/saleor-app/logger-leak": "error" },
+  },
+];
+```
+
+#### Legacy config
+
+##### Recommended configuration
 
 ```json
 {
@@ -49,7 +74,7 @@ You can either use recommended configuration or configure each rule manually
 }
 ```
 
-#### Manual configuration
+##### Manual configuration
 
 Add the plugin to your ESLint config:
 
