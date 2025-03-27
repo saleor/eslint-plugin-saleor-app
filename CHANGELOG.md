@@ -1,5 +1,11 @@
 # eslint-plugin-saleor-app
 
+## 0.2.0
+
+### Minor Changes
+
+- a268e32: Update rule to eslint flat configuration
+
 ## 0.1.2
 
 ### Patch Changes
