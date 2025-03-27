@@ -1,13 +1,11 @@
-import { ESLintUtils } from "@typescript-eslint/utils";
 import { type ObjectExpression } from "@typescript-eslint/types/dist/generated/ast-spec";
-import ts from "typescript";
+import { ESLintUtils } from "@typescript-eslint/utils";
 import * as tsutils from "tsutils";
+import ts from "typescript";
 
 export const loggerRules = ESLintUtils.RuleCreator.withoutDocs({
-  create(context) {
-    const propertiesToCheck = context.options[0]
-      ? new Set(context.options[0])
-      : new Set(["logger"]);
+  create(context, options) {
+    const propertiesToCheck = new Set(options[0]);
 
     return {
       CallExpression(node) {
@@ -82,9 +80,6 @@ export const loggerRules = ESLintUtils.RuleCreator.withoutDocs({
     type: "problem",
     docs: {
       description: "Invalid logs usage - object shorthand property",
-      recommended: "error",
-      suggestion: false,
-      requiresTypeChecking: true,
     },
     messages: {
       noShorthand:
@@ -100,11 +95,10 @@ export const loggerRules = ESLintUtils.RuleCreator.withoutDocs({
         items: {
           type: "string",
           title: "Override logger names to check",
-          examples: ["myLogger", "customLogger"],
           default: ["logger"],
         },
       },
     ],
   },
-  defaultOptions: [],
+  defaultOptions: [["logger"]],
 });
