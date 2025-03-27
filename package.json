@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@saleor/eslint-plugin-saleor-app",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "ESLint plugin for Saleor Apps",
   "scripts": {
     "build": "tsup-node src/* --format esm,cjs && clear-package-json package.json -o dist/package.json --fields publishConfig && pnpm copy-files",
