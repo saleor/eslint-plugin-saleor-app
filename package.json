@@ -30,7 +30,7 @@
     "npm": ">=10.0.0 <11.0.0",
     "pnpm": ">=10.0.0 <11.0.0"
   },
-  "packageManager": "pnpm@10.6.5",
+  "packageManager": "pnpm@10.28.1",
   "author": {
     "name": "Saleor Commerce",
     "url": "https://saleor.io"
